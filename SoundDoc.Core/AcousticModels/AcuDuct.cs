@@ -1,9 +1,10 @@
-﻿using SoundDoc.Abstractions.Models;
+﻿using NoiseAnalyzer.Core.Utils;
+using SoundDoc.Abstractions.Models;
 using SoundDoc.Core.Data;
 using SoundDoc.Core.Data.HydraulicModels;
 using SoundDoc.Core.Physics;
 
-namespace SoundDoc.Core
+namespace NoiseAnalyzer.Core.AcousticModels
 {
     /**
     *  ACOUSTIC PROPERTIES CLASS - VENTILATION RECTANGULAR OR CIRCULAR DUCT
@@ -20,7 +21,7 @@ namespace SoundDoc.Core
             return new();
         }
 
-        private AcuDuct(HydraulicsDuct hydraulics) 
+        private AcuDuct(HydraulicsDuct hydraulics)
             : base(hydraulics)
         {
             MaterialDataBase = new AbsorbingMaterials();
@@ -51,17 +52,17 @@ namespace SoundDoc.Core
             return this;
         }
 
-        protected override void CalculateSourceDa() 
+        protected override void CalculateSourceDa()
         {
-            SourceDa = PhysicsDuct.CalcDuctSourceDa(Hydraulics,DuctMaterial);
+            SourceDa = PhysicsDuct.CalcDuctSourceDa(Hydraulics, DuctMaterial);
         }
 
-        protected override void CalculateSourceLw() 
+        protected override void CalculateSourceLw()
         {
             SourceLw = PhysicsDuct.CalcDuctSourceLw(Hydraulics);
         }
 
-        public void SetDuctLength(double length) 
+        public void SetDuctLength(double length)
         {
             Hydraulics.SetDuctLength(length);
             UpdateAcousticProperties();

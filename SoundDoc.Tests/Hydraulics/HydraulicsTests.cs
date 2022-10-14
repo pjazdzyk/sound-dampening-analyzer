@@ -1,5 +1,5 @@
 ﻿using System;
-using SoundDoc.Core;
+using NoiseAnalyzer.Core.Utils;
 using SoundDoc.Core.Physics;
 using Xunit;
 

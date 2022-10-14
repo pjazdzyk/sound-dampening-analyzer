@@ -3,7 +3,7 @@ using SoundDoc.Core.Data.HydraulicModels;
 using SoundDoc.Core.Data.RoomModels;
 using SoundDoc.Core.Physics;
 
-namespace SoundDoc.Core
+namespace NoiseAnalyzer.Core.AcousticModels
 {
     public sealed class AcuTerminal : AcuBasic<HydraulicsTerminal>, IRoomTerminal
     {
@@ -46,31 +46,31 @@ namespace SoundDoc.Core
             return this;
         }
 
-        public AcuTerminal WithGrossDischargeArea(double grossDiscArea) 
+        public AcuTerminal WithGrossDischargeArea(double grossDiscArea)
         {
             SetGrossDischargeArea(grossDiscArea);
             return this;
         }
 
-        public AcuTerminal WithLocation(OutletLocation location) 
+        public AcuTerminal WithLocation(OutletLocation location)
         {
             SetLocation(location);
             return this;
         }
 
-        public void SetLocation(OutletLocation location) 
+        public void SetLocation(OutletLocation location)
         {
             Location = location;
             UpdateAcousticProperties();
         }
 
-        public void SetGrossDischargeArea(double discArea) 
+        public void SetGrossDischargeArea(double discArea)
         {
             GrossDischArea = discArea;
             UpdateAcousticProperties();
         }
 
-        public void SetMountAngle(double mountAngle) 
+        public void SetMountAngle(double mountAngle)
         {
             MountAngle = mountAngle;
         }
@@ -80,7 +80,7 @@ namespace SoundDoc.Core
             if (!IncludeGrilles)
                 return;
 
-           SourceDa = PhysicsTerminal.CalcRoomTerminalSourceDa(Location, GrossDischArea);
+            SourceDa = PhysicsTerminal.CalcRoomTerminalSourceDa(Location, GrossDischArea);
         }
 
         protected override void CalculateSourceLw()

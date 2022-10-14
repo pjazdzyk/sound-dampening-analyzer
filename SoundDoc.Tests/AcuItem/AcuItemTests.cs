@@ -1,7 +1,8 @@
-﻿using SoundDoc.Core;
-using Xunit;
+﻿using Xunit;
 using System;
 using SoundDoc.Core.Physics;
+using NoiseAnalyzer.Core.AcousticModels;
+using NoiseAnalyzer.Core.Utils;
 
 namespace SoundDoc.Tests
 {

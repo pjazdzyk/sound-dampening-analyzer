@@ -5,8 +5,9 @@ using System;
 using System.Linq;
 using System.Text;
 using SoundDoc.Core.Data.HydraulicModels;
+using NoiseAnalyzer.Core.Utils;
 
-namespace SoundDoc.Core
+namespace NoiseAnalyzer.Core.AcousticModels
 {
     /**
     *  ACOUSTIC PROPERTIES CLASS - GENERIC ITEM, MANUAL INPUT FOR SOURCELW AND SOURCE DA
@@ -14,11 +15,11 @@ namespace SoundDoc.Core
 
     public class AcuItem
     {
-        public string Name { get; protected set; }                       
-        public double[] SourceLw { get; protected set; }                          
-        public double[] SourceDa { get; protected set; }               
-        public double[] InputLw { get; protected set; }                 
-        public double[] OutputLw { get; private set; }            
+        public string Name { get; protected set; }
+        public double[] SourceLw { get; protected set; }
+        public double[] SourceDa { get; protected set; }
+        public double[] InputLw { get; protected set; }
+        public double[] OutputLw { get; private set; }
 
         public AcuItem(string name = null, double[] inputLw = null, double[] sourceLw = null, double[] sourceDa = null)
         {
@@ -45,13 +46,13 @@ namespace SoundDoc.Core
             }
         }
 
-        protected static void ChecklIfContainsNegative(double[] array) 
+        protected static void ChecklIfContainsNegative(double[] array)
         {
-            foreach(double value in array)
+            foreach (double value in array)
             {
                 if (value < 0)
                     throw new ArgumentException(nameof(array) + $"Negative value present inside the array at index {Array.IndexOf(array, value)}: {value}.");
-            }    
+            }
         }
 
         protected void CalculateOutputLw()
@@ -72,13 +73,13 @@ namespace SoundDoc.Core
             EnsureMinBackgroundLw();
             CalculateOutputLw();
         }
-        
-        public void SetSourceLw(double[] sourceLw) 
+
+        public void SetSourceLw(double[] sourceLw)
         {
             if (sourceLw == null)
                 throw new ArgumentNullException(nameof(sourceLw));
 
-            if (sourceLw.Length != Defaults.NumberOfOctaves )
+            if (sourceLw.Length != Defaults.NumberOfOctaves)
                 throw new ArgumentException(nameof(sourceLw));
 
             ChecklIfContainsNegative(sourceLw);
@@ -86,12 +87,12 @@ namespace SoundDoc.Core
             CalculateOutputLw();
         }
 
-        public void SetSourceDa(double[] sourceDa) 
+        public void SetSourceDa(double[] sourceDa)
         {
             if (sourceDa == null)
                 throw new ArgumentNullException(nameof(sourceDa));
 
-            if (sourceDa.Length != 8 )
+            if (sourceDa.Length != 8)
                 throw new ArgumentException(nameof(sourceDa));
 
             ChecklIfContainsNegative(sourceDa);
@@ -135,7 +136,7 @@ namespace SoundDoc.Core
             THydraulics Hydraulics = hydraulics ?? throw new ArgumentNullException(nameof(hydraulics));
             UpdateAcousticProperties();
         }
-        
+
         public void SetUpStreamGeometry(double dim1, double dim2 = 0)
         {
             Hydraulics.SetUpStreamGeometry(dim1, dim2);

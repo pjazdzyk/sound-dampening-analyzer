@@ -1,8 +1,9 @@
-﻿using SoundDoc.Core.Data;
+﻿using NoiseAnalyzer.Core.Utils;
+using SoundDoc.Core.Data;
 using SoundDoc.Core.Data.HydraulicModels;
 using SoundDoc.Core.Physics;
 
-namespace SoundDoc.Core
+namespace NoiseAnalyzer.Core.AcousticModels
 {
     public class AcuFan : AcuBasic<HydraulicsFan>
     {

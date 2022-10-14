@@ -4,14 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SoundDoc.Core.Data.HydraulicModels;
+using NoiseAnalyzer.Core.Utils;
 
-namespace SoundDoc.Core
+namespace NoiseAnalyzer.Core.AcousticModels
 {
     public class AcuDamper : AcuBasic<HydraulicsDamper>
     {
         private AcuDamper() : this(HydraulicsDamper.FromDefaults()) { }
 
-        public static AcuDamper FromDefaults() 
+        public static AcuDamper FromDefaults()
         {
             return new();
         }
@@ -22,7 +23,7 @@ namespace SoundDoc.Core
             UpdateAcousticProperties();
         }
 
-        public static AcuDamper FromHydraulics(HydraulicsDamper hydraulics) 
+        public static AcuDamper FromHydraulics(HydraulicsDamper hydraulics)
         {
             return new(hydraulics);
         }
@@ -33,7 +34,7 @@ namespace SoundDoc.Core
             return this;
         }
 
-        public AcuDamper WithInputLw(double[] inputLw) 
+        public AcuDamper WithInputLw(double[] inputLw)
         {
             SetInputLw(inputLw);
             return this;

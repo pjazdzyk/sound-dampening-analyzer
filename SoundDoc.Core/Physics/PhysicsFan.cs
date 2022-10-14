@@ -1,6 +1,7 @@
 ﻿using SoundDoc.Core.Data;
 using System;
 using SoundDoc.Core.Data.HydraulicModels;
+using NoiseAnalyzer.Core.Utils;
 
 namespace SoundDoc.Core.Physics
 {

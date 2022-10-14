@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using NoiseAnalyzer.Core.Utils;
 using SoundDoc.Core.Extensions;
 using SoundDoc.Core.Physics;
 

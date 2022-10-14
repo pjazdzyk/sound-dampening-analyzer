@@ -2,6 +2,7 @@
 using SoundDoc.Core.Data.HydraulicModels;
 using System.Linq;
 using SoundDoc.Core.Data.RoomModels;
+using NoiseAnalyzer.Core.Utils;
 
 namespace SoundDoc.Core.Physics
 {

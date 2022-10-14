@@ -3,8 +3,9 @@ using System;
 using SoundDoc.Abstractions.Models;
 using SoundDoc.Core.Data.HydraulicModels;
 using SoundDoc.Core.Physics;
+using NoiseAnalyzer.Core.Utils;
 
-namespace SoundDoc.Core
+namespace NoiseAnalyzer.Core.AcousticModels
 {
     /**
     *  ACOUSTIC PROPERTIES CLASS - VENTILATION BEND / ELBOW
@@ -40,13 +41,13 @@ namespace SoundDoc.Core
             return this;
         }
 
-        public AcuBend WithInputLw(double[] inputLw) 
+        public AcuBend WithInputLw(double[] inputLw)
         {
             SetInputLw(inputLw);
             return this;
         }
 
-        public AcuBend WithBendMaterial(Material bendMaterial) 
+        public AcuBend WithBendMaterial(Material bendMaterial)
         {
             SetBendNatDampeningInstance(bendMaterial);
             return this;

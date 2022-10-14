@@ -1,7 +1,9 @@
 ﻿
+using NoiseAnalyzer.Core.AcousticModels;
+
 namespace SoundDoc.Core.Data.RoomModels
 {
-   public interface IRoomTerminal
+    public interface IRoomTerminal
     {
         public void SetLocation(OutletLocation location);
         public void SetGrossDischargeArea(double discArea);

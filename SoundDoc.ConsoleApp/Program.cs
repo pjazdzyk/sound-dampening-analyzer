@@ -4,6 +4,7 @@ using SoundDoc.Core.Data;
 using SoundDoc.Core.Data.HydraulicModels;
 using SoundDoc.Core.Physics;
 using SoundDoc.Core.Data.RoomModels;
+using NoiseAnalyzer.Core.AcousticModels;
 
 namespace SoundDoc.ConsoleApp
 {

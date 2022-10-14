@@ -1,4 +1,4 @@
-﻿using SoundDoc.Core;
+﻿using NoiseAnalyzer.Core.Utils;
 
 namespace SoundDoc.Tests.Physics
 {

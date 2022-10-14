@@ -1,4 +1,5 @@
-﻿using SoundDoc.Abstractions.Models;
+﻿using NoiseAnalyzer.Core.Utils;
+using SoundDoc.Abstractions.Models;
 using SoundDoc.Core.Physics;
 using System;
 using System.Collections.Generic;

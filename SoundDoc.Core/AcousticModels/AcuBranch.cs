@@ -4,7 +4,7 @@ using SoundDoc.Core.Data;
 using SoundDoc.Core.Data.HydraulicModels;
 using SoundDoc.Core.Physics;
 
-namespace SoundDoc.Core
+namespace NoiseAnalyzer.Core.AcousticModels
 {
     /**
     *  ACOUSTIC PROPERTIES CLASS - VENTILATION DUCT BRANCH
@@ -13,7 +13,7 @@ namespace SoundDoc.Core
     {
         private AcuBranch() : this(HydraulicsBranch.FromDefaults()) { }
 
-        public static AcuBranch FromDefaults() 
+        public static AcuBranch FromDefaults()
         {
             return new();
         }
@@ -24,29 +24,29 @@ namespace SoundDoc.Core
             UpdateAcousticProperties();
         }
 
-        public static AcuBranch FromHydraulics(HydraulicsBranch hydraulics) 
+        public static AcuBranch FromHydraulics(HydraulicsBranch hydraulics)
         {
             return new(hydraulics);
         }
 
-        public AcuBranch WithName(string name) 
+        public AcuBranch WithName(string name)
         {
             Name = name;
             return this;
         }
 
-        public AcuBranch WithInputLw(double[] inputLw) 
+        public AcuBranch WithInputLw(double[] inputLw)
         {
             SetInputLw(inputLw);
             return this;
         }
 
-        protected override void CalculateSourceDa() 
+        protected override void CalculateSourceDa()
         {
             // throw new NotImplementedException("Do zakodowania");
         }
 
-        protected override void CalculateSourceLw()                          
+        protected override void CalculateSourceLw()
         {
             SourceLw = PhysicsBranch.CalcBranchSourceLw(Hydraulics);
         }

@@ -1,7 +1,6 @@
-﻿
-using SoundDoc.Abstractions.Models;
+﻿using SoundDoc.Abstractions.Models;
 
-namespace SoundDoc.Core
+namespace NoiseAnalyzer.Core.Utils
 {
     public static class Defaults
     {
@@ -26,16 +25,16 @@ namespace SoundDoc.Core
         public const double FanSpecLw = 35.0;           // default specific fan sound power level [dB]
         public const double SoundSpeedC = 340.0;        // default speed of sound in air, [m/s]
 
-        public static double[] EmptyOctaveArray => new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+        public static double[] EmptyOctaveArray => new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
         public static double[] InputLwArray => new double[] { LwSrc, LwSrc, LwSrc, LwSrc, LwSrc, LwSrc, LwSrc, LwSrc };     // default sound power spectrum [dB]
         public static double[] InputLwMinAray => new double[] { LwMin, LwMin, LwMin, LwMin, LwMin, LwMin, LwMin, LwMin };   // minimum sound power spectrum [dB]
         public static double[] TestSourceDa => new double[] { 6.0, 17.0, 34.0, 36.0, 38.0, 29.0, 19.0, 15.0 };              // test damperning array [dB] 
-        public static double[] TestSourceLw => new double[] { 58.0, 54.0, 49.0, 45.0, 41.0, 37.0, 34.0, 31.0};              // test source noise array [dB]
+        public static double[] TestSourceLw => new double[] { 58.0, 54.0, 49.0, 45.0, 41.0, 37.0, 34.0, 31.0 };              // test source noise array [dB]
         public static double[] OctCenterBand => new double[] { 63.0, 125.0, 250.0, 500.0, 1000.0, 2000.0, 4000.0, 8000.0 }; // octave center band array (fm) [Hz]
         public static double[] OctBandWidth => new double[] { 45.0, 88.0, 177.0, 354.0, 707.0, 1414.0, 2828.0, 5657.0 };    // octave wide band array (delta_f) [Hz]
-        
+
         public static int NumberOfOctaves = OctCenterBand.Length;       // octave arrays length
-       
+
         public static readonly string Name = "New Unnmamed Item";       // default element name
         public static readonly string Material = "blachaOcynk";         // default duct material DB key
         public static readonly string BendKey = "rectDuct";             // default bend type DB key

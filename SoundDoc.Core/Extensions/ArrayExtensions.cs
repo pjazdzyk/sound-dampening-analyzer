@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoiseAnalyzer.Core.Utils;
+using System;
 using System.Linq;
 
 namespace SoundDoc.Core.Extensions

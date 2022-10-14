@@ -1,8 +1,8 @@
-﻿using SoundDoc.Core;
-using System;
+﻿using System;
 using SoundDoc.Core.Data;
 using SoundDoc.Core.Data.HydraulicModels;
 using Xunit;
+using NoiseAnalyzer.Core.Utils;
 
 namespace SoundDoc.Tests
 {

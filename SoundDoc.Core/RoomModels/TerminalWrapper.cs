@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoiseAnalyzer.Core.AcousticModels;
+using System;
 
 namespace SoundDoc.Core.Data.RoomModels
 {

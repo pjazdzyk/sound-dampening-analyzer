@@ -1,7 +1,7 @@
 using SoundDoc.Core.Extensions;
 using Xunit;
 
-namespace SoundDoc.Tests
+namespace NoiseAnalyzer.Tests.Extensions
 {
     public class ArrayExtensionsTests
     {
@@ -37,11 +37,11 @@ namespace SoundDoc.Tests
         public void LogSumArrayTest()
         {
             // Arrange
-            var input1 = new[] { 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0};
+            var input1 = new[] { 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0 };
             var expected1 = 19.0308998699194;
-            var input2 = new[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+            var input2 = new[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
             var expected2 = 0.0;
-            var input3 = new[] { 10.0, 10.0, 10.0, 10.0, 0.0, 0.0, 0.0, 0.0};
+            var input3 = new[] { 10.0, 10.0, 10.0, 10.0, 0.0, 0.0, 0.0, 0.0 };
             var expected3 = 16.0205999132796;
 
             // Act
@@ -66,7 +66,7 @@ namespace SoundDoc.Tests
 
             // Act
             var result1 = array1 == array2;
-            var result2 = array1.EqualsToPrecision(array2,minAccuracy);
+            var result2 = array1.EqualsToPrecision(array2, minAccuracy);
 
             // Assert
             Assert.False(result1);
@@ -75,7 +75,7 @@ namespace SoundDoc.Tests
         }
 
         [Fact]
-        public void LogSumTwoArraysTests() 
+        public void LogSumTwoArraysTests()
         {
             // Arrange
             var input1 = new[] { 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0 };
@@ -89,22 +89,22 @@ namespace SoundDoc.Tests
             var expected4 = new[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };  //input4 + input4 
 
             // Act
-            var actual1 = ArrayExtensions.LogSumTwoArrays(input1, input2);
-            var actual2 = ArrayExtensions.LogSumTwoArrays(input1, input3);
-            var actual3 = ArrayExtensions.LogSumTwoArrays(input3, input4);
-            var actual4 = ArrayExtensions.LogSumTwoArrays(input4, input4);
+            var actual1 = input1.LogSumTwoArrays(input2);
+            var actual2 = input1.LogSumTwoArrays(input3);
+            var actual3 = input3.LogSumTwoArrays(input4);
+            var actual4 = input4.LogSumTwoArrays(input4);
 
             // Assert
-            Assert.True(ArrayExtensions.EqualsToPrecision(expected1, actual1, MathAccuracy));
-            Assert.True(ArrayExtensions.EqualsToPrecision(expected2, actual2, MathAccuracy));
-            Assert.True(ArrayExtensions.EqualsToPrecision(expected3, actual3, MathAccuracy));
-            Assert.True(ArrayExtensions.EqualsToPrecision(expected4, actual4, MathAccuracy));
+            Assert.True(expected1.EqualsToPrecision(actual1, MathAccuracy));
+            Assert.True(expected2.EqualsToPrecision(actual2, MathAccuracy));
+            Assert.True(expected3.EqualsToPrecision(actual3, MathAccuracy));
+            Assert.True(expected4.EqualsToPrecision(actual4, MathAccuracy));
 
         }
 
 
     }
-        
+
 
 
 

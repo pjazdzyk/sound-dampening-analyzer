@@ -1,4 +1,5 @@
-﻿using SoundDoc.Core;
+﻿using NoiseAnalyzer.Core.AcousticModels;
+using NoiseAnalyzer.Core.Utils;
 using SoundDoc.Core.Data;
 using SoundDoc.Core.Data.HydraulicModels;
 using SoundDoc.Core.Data.RoomModels;
