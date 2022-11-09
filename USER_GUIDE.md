@@ -6,7 +6,7 @@
 
 ---
 
-#### [HOME](README.md) | [DUCT NETWORK MODEL](#duct-network-model) | [ROOM MODEL](#room-model) | [USE EXAMPLE](#use-example)
+### [HOME](README.md) | [DUCT NETWORK MODEL](#duct-network-model) | [ROOM MODEL](#room-model) | [USE EXAMPLE](#use-example)
 
 ---
 
