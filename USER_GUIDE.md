@@ -6,11 +6,7 @@
 
 ---
 
-<span style="font-weight:700;font-size:15px">
-
-[HOME](README.md) | [DUCT NETWORK MODEL](#duct-network-model) | [ROOM MODEL](#room-model) |  [USE EXAMPLE](#use-example)
-
-</span>
+#### [HOME](README.md) | [DUCT NETWORK MODEL](#duct-network-model) | [ROOM MODEL](#room-model) | [USE EXAMPLE](#use-example)
 
 ---
 

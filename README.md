@@ -10,13 +10,7 @@
 
 ---
 
-<span style="font-weight:700;font-size:15px">
-
-[USER GUIDE](USER_GUIDE.md) | [DESCRIPTION](#short-description) | [TECH](#tech) | [FUNCTIONALITY](#current-functionality) |
-[COLLABORATION](#collaboration) | [LEGAL DISCLAIMER](#legal-disclaimer) | [REFERENCE SOURCES](#reference-sources) |
-[ACKNOWLEDGMENTS](#acknowledgments)
-
-</span>
+#### [USER GUIDE](USER_GUIDE.md) | [DESCRIPTION](#short-description) | [TECH](#tech) | [FUNCTIONALITY](#current-functionality) | [COLLABORATION](#collaboration) | [LEGAL DISCLAIMER](#legal-disclaimer) | REFERENCE SOURCES](#reference-sources) | [ACKNOWLEDGMENTS](#acknowledgments)
 
 ---
 
