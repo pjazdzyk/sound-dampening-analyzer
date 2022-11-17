@@ -23,12 +23,6 @@ of high velocities,  dampening properties might be consumed by internal noise ge
 An additional module has been included allowing for detailed calculation of room sound absorption properties based on internal finish and equipment.<br>
 This is an engineering library. It is meant to be used in development of other applications.
 
-### DEVELOPMENT STATUS
-This project has been temporarily suspended. I tried to build a marble palace with using my bare hands, where this projects need a team of 5 engineers and skilled programmers. 
-If you have a good pair of eyes and can C# and you are interested in participation in development of this project, please contact me!
-Check the Architecture folder for presentation, physical concepts explanation I have prepared and concept GUI I have proposed. Originally this project
-was meant to be desktop application, but current preference is to go web.
-
 ### TECH
 ![image](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white) &nbsp;
 ![image](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white) &nbsp;
