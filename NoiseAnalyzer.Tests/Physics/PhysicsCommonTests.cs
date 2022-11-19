@@ -7,59 +7,50 @@ using NoiseAnalyzer.Core.HydraulicModels;
 
 namespace NoiseAnalyzer.Tests.Physics
 {
-    public class PhysicsCommonTests
+    public class PhysicsCommonTests : PhysicsTestConstants
     {
         // Arrange (Shared)
-        const double ZeroValue = 0.0;            // constant 0.0 value for exception tests
-        const double NegativeValue = -0.6;       // generic negative value for all cases [-]
-        const double MaxDimExceed = Defaults.DimMax + 0.01; // Exceeded maximum dimension [m]
-        const double DimA = 0.6;                 // dimension size A [m]
-        const double DimB = 0.3;                 // dimension size B [m]
-        const double Vol1 = 0.50;                // airflow [m3/s]
-        const double Area1 = 0.25;               // area [m2]
-        const double SrcDa = 3.5;                // source dampening   
-        const double SrcLw = Defaults.LwSrc;     // source noise
-        const double Accuracy = 0.0000001;       // aceptable accuracy for double equality check
+
         static double Func(HydraulicsTerminal hydraulics, double fm) => -(71.72 - (67.37 / (1 + Math.Pow(fm * 1 / (hydraulics.InVelocity * hydraulics.DischargeCoefficient) / 363.74, 1.1))));
 
         [Fact]
-        public void CalcCalcDuctSecAreaTest() 
+        public void CalcCalcDuctSecAreaTest()
         {
             // Arrange
-            double expected1 = Math.PI * DimA * DimA / 4;
-            double expected2 = DimA * DimB;
+            double expected1 = Math.PI * Dim1 * Dim1 / 4;
+            double expected2 = Dim1 * Dim2;
 
             // Act
-            double result1 = PhysicsCommon.CalcDuctSecArea(DimA);
-            double result2 = PhysicsCommon.CalcDuctSecArea(DimA,DimB);
+            double result1 = PhysicsCommon.CalcDuctSecArea(Dim1);
+            double result2 = PhysicsCommon.CalcDuctSecArea(Dim1, Dim2);
 
             // Assert
-            Assert.Equal(expected1,result1);
-            Assert.Equal(expected2,result2);
+            Assert.Equal(expected1, result1);
+            Assert.Equal(expected2, result2);
         }
 
         [Theory]
-        [InlineData(ZeroValue, DimA)]
-        [InlineData(NegativeValue, DimA)]
-        [InlineData(DimA, NegativeValue)]
-        [InlineData(DimA, MaxDimExceed)]
-        [InlineData(MaxDimExceed, DimA)]
-        public void CalcCalcDuctSecAreaExceptionTest(double value1, double value2) 
+        [InlineData(ZeroValue, Dim1)]
+        [InlineData(NegativeValue, Dim1)]
+        [InlineData(Dim1, NegativeValue)]
+        [InlineData(Dim1, MaxDimExeeded)]
+        [InlineData(MaxDimExeeded, Dim1)]
+        public void CalcCalcDuctSecAreaExceptionTest(double value1, double value2)
         {
             // Assert
-            Assert.ThrowsAny<Exception>( () => PhysicsCommon.CalcDuctSecArea(value1,value2) );
+            Assert.ThrowsAny<Exception>(() => PhysicsCommon.CalcDuctSecArea(value1, value2));
         }
 
         [Fact]
         public void CalcCalcDuctSecPerimeterTest()
         {
             // Arrange
-            double expected1 = Math.PI * DimA;
-            double expected2 = 2*DimA + 2*DimB;
+            double expected1 = Math.PI * Dim1;
+            double expected2 = 2 * Dim1 + 2 * Dim2;
 
             // Act
-            double result1 = PhysicsCommon.CalcDuctSecPerimeter(DimA);
-            double result2 = PhysicsCommon.CalcDuctSecPerimeter(DimA, DimB);
+            double result1 = PhysicsCommon.CalcDuctSecPerimeter(Dim1);
+            double result2 = PhysicsCommon.CalcDuctSecPerimeter(Dim1, Dim2);
 
             // Assert
             Assert.Equal(expected1, result1);
@@ -68,11 +59,11 @@ namespace NoiseAnalyzer.Tests.Physics
         }
 
         [Theory]
-        [InlineData(ZeroValue, DimA)]
-        [InlineData(NegativeValue, DimA)]
-        [InlineData(DimA, NegativeValue)]
-        [InlineData(DimA, MaxDimExceed)]
-        [InlineData(MaxDimExceed, DimA)]
+        [InlineData(ZeroValue, Dim1)]
+        [InlineData(NegativeValue, Dim1)]
+        [InlineData(Dim1, NegativeValue)]
+        [InlineData(Dim1, MaxDimExeeded)]
+        [InlineData(MaxDimExeeded, Dim1)]
         public void CalcCalcDuctSecPerimeterExceptionTest(double value1, double value2)
         {
             // Assert
@@ -107,24 +98,24 @@ namespace NoiseAnalyzer.Tests.Physics
         public void CalcRectDuctEquivDiameterTest()
         {
             // Arrange
-            var expected = Math.Sqrt(4 / Math.PI * DimA * DimB);
+            var expected = Math.Sqrt(4 / Math.PI * Dim1 * Dim2);
 
             // Act
-            var actual1 = PhysicsCommon.CalcEquivDiameter(DimA, DimB);
-            var actual2 = PhysicsCommon.CalcEquivDiameter(DimA, ZeroValue);
+            var actual1 = PhysicsCommon.CalcEquivDiameter(Dim1, Dim2);
+            var actual2 = PhysicsCommon.CalcEquivDiameter(Dim1, ZeroValue);
 
             // Assert
             Assert.Equal(expected, actual1);
         }
 
         [Theory]
-        [InlineData(ZeroValue, DimA)]
+        [InlineData(ZeroValue, Dim1)]
         [InlineData(ZeroValue, ZeroValue)]
-        [InlineData(DimA, NegativeValue)]
-        [InlineData(NegativeValue, DimA)]
+        [InlineData(Dim1, NegativeValue)]
+        [InlineData(NegativeValue, Dim1)]
         [InlineData(NegativeValue, NegativeValue)]
-        [InlineData(DimA, MaxDimExceed)]
-        [InlineData(MaxDimExceed, DimA)]
+        [InlineData(Dim1, MaxDimExeeded)]
+        [InlineData(MaxDimExeeded, Dim1)]
         public void CalcRectDuctEquivDiameterRxceptionsTest(double value1, double value2)
         {
             // Assert
@@ -135,12 +126,12 @@ namespace NoiseAnalyzer.Tests.Physics
         public void CalcHydrDiameterTest()
         {
             // Arrange
-            var expected1 = 4 * (DimA * DimB) / (2 * DimA + 2 * DimB);
-            var expected2 = DimA;
+            var expected1 = 4 * (Dim1 * Dim2) / (2 * Dim1 + 2 * Dim2);
+            var expected2 = Dim1;
 
             // Act
-            var actual1 = PhysicsCommon.CalcHydrDiameter(DimA, DimB);
-            var actual2 = PhysicsCommon.CalcHydrDiameter(DimA, ZeroValue);
+            var actual1 = PhysicsCommon.CalcHydrDiameter(Dim1, Dim2);
+            var actual2 = PhysicsCommon.CalcHydrDiameter(Dim1, ZeroValue);
 
             // Assert
             Assert.Equal(expected1, actual1);
@@ -148,13 +139,13 @@ namespace NoiseAnalyzer.Tests.Physics
         }
 
         [Theory]
-        [InlineData(ZeroValue, DimA)]
+        [InlineData(ZeroValue, Dim1)]
         [InlineData(ZeroValue, ZeroValue)]
-        [InlineData(DimA, NegativeValue)]
-        [InlineData(NegativeValue, DimA)]
+        [InlineData(Dim1, NegativeValue)]
+        [InlineData(NegativeValue, Dim1)]
         [InlineData(NegativeValue, NegativeValue)]
-        [InlineData(DimA, MaxDimExceed)]
-        [InlineData(MaxDimExceed, DimA)]
+        [InlineData(Dim1, MaxDimExeeded)]
+        [InlineData(MaxDimExeeded, Dim1)]
         public void CalcHydrDiameterExceptionsTest(double value1, double value2)
         {
             // Assert
@@ -165,15 +156,15 @@ namespace NoiseAnalyzer.Tests.Physics
         public void CalcHydrRadiusTest()
         {
             // Arrange
-            var expected1 = (DimA * DimB) / (2*DimA + 2*DimB);
-            var expected2 = DimA/4;     
+            var expected1 = (Dim1 * Dim2) / (2 * Dim1 + 2 * Dim2);
+            var expected2 = Dim1 / 4;
             //It may be surprising, but yes: hydraulic radius is half of geometrical radius. This is why: d/4.
-            var expected3 = PhysicsCommon.CalcHydrDiameter(DimA, DimB) / 4;
-            var expected4 = PhysicsCommon.CalcHydrDiameter(DimA, ZeroValue) / 4;
+            var expected3 = PhysicsCommon.CalcHydrDiameter(Dim1, Dim2) / 4;
+            var expected4 = PhysicsCommon.CalcHydrDiameter(Dim1, ZeroValue) / 4;
 
             // Act
-            var actual1 = PhysicsCommon.CalcHydrRadius(DimA, DimB);
-            var actual2 = PhysicsCommon.CalcHydrRadius(DimA, ZeroValue);
+            var actual1 = PhysicsCommon.CalcHydrRadius(Dim1, Dim2);
+            var actual2 = PhysicsCommon.CalcHydrRadius(Dim1, ZeroValue);
 
             // Assert
             Assert.Equal(expected1, actual1);
@@ -183,13 +174,13 @@ namespace NoiseAnalyzer.Tests.Physics
         }
 
         [Theory]
-        [InlineData(ZeroValue, DimA)]
+        [InlineData(ZeroValue, Dim1)]
         [InlineData(ZeroValue, ZeroValue)]
-        [InlineData(DimA, NegativeValue)]
-        [InlineData(NegativeValue, DimA)]
+        [InlineData(Dim1, NegativeValue)]
+        [InlineData(NegativeValue, Dim1)]
         [InlineData(NegativeValue, NegativeValue)]
-        [InlineData(DimA, MaxDimExceed)]
-        [InlineData(MaxDimExceed, DimA)]
+        [InlineData(Dim1, MaxDimExeeded)]
+        [InlineData(MaxDimExeeded, Dim1)]
         public void CalcHydrRadiusExceptionsTest(double value1, double value2)
         {
             // Assert
@@ -197,7 +188,8 @@ namespace NoiseAnalyzer.Tests.Physics
         }
 
         [Fact]
-        public void CalcOutLwFromSourceDaTest() {
+        public void CalcOutLwFromSourceDaTest()
+        {
 
             // Arrange
             var inLw = 95;
@@ -211,17 +203,17 @@ namespace NoiseAnalyzer.Tests.Physics
             var result2 = PhysicsCommon.CalcOutLwFromSourceDa(inLw, srcDa2);
 
             // Assert
-            Assert.Equal(result1,expected1);
-            Assert.Equal(result2,expected2);
+            Assert.Equal(result1, expected1);
+            Assert.Equal(result2, expected2);
         }
 
         [Theory]
         [InlineData(NegativeValue, SrcLw)]
         [InlineData(SrcDa, NegativeValue)]
-        public void CalcOutLwFromSourceDaExceptionTest(double inLw, double inDa) 
+        public void CalcOutLwFromSourceDaExceptionTest(double inLw, double inDa)
         {
             // Assert
-            Assert.ThrowsAny<Exception>(()=> PhysicsCommon.CalcOutLwFromSourceDa(inLw,inDa));
+            Assert.ThrowsAny<Exception>(() => PhysicsCommon.CalcOutLwFromSourceDa(inLw, inDa));
         }
 
         [Fact]
@@ -241,7 +233,7 @@ namespace NoiseAnalyzer.Tests.Physics
         }
 
         [Fact]
-        public void CalcOutLwFromSourceLwDaExceptionsTest() 
+        public void CalcOutLwFromSourceLwDaExceptionsTest()
         {
             // Arrange
             double[] inLwArr = { 92.0, 90.0, 88.0, 84.0, 79.0, 74.0, 67.0, 60.0 };
@@ -254,11 +246,11 @@ namespace NoiseAnalyzer.Tests.Physics
         }
 
         [Fact]
-        public void CalcTotalLwOktGessamntTests() 
+        public void CalcTotalLwOktGessamntTests()
         {
             // Arrange
             var terminalHydr = HydraulicsTerminal.Create(0.25, 10.0, 20.0, 0.3);
-            var expected = 1.6283078; 
+            var expected = 1.6283078;
             var highRange = expected + Accuracy;
             var lowRange = expected - Accuracy;
 
@@ -270,7 +262,7 @@ namespace NoiseAnalyzer.Tests.Physics
         }
 
         [Fact]
-        public void CalcLwOktTests() 
+        public void CalcLwOktTests()
         {
             // Arrange
             var terminalHydr = HydraulicsTerminal.Create(0.25, 10.0, 20.0, 0.3);
@@ -296,7 +288,7 @@ namespace NoiseAnalyzer.Tests.Physics
             var expected = new[] { 23.10160133, 22.88552897, 22.42348610, 21.45424554, 19.46894159, 15.59392862, 8.69587612, 0.0 };
 
             // Act
-            var result = PhysicsCommon.CalcLwOktArray(terminalHydr,Func, lw);
+            var result = PhysicsCommon.CalcLwOktArray(terminalHydr, Func, lw);
 
             // Assert
             Assert.True(result.EqualsToPrecision(expected, Accuracy));
@@ -317,13 +309,13 @@ namespace NoiseAnalyzer.Tests.Physics
         }
 
         [Fact]
-        public void CalcLogSumTests() 
+        public void CalcLogSumTests()
         {
             // Arrange
             var expected = 34.7712125471966;
 
             // Act
-            var actual = PhysicsCommon.CalcLogSum(30.0,30.0,30.0);
+            var actual = PhysicsCommon.CalcLogSum(30.0, 30.0, 30.0);
 
             // Assert
             Assert.Equal(expected, actual, 2);
